@@ -19,7 +19,6 @@ const q1 = () => {
 return new Promise((resolve, reject) => {
     rl.question("Enter About Todays Feelings: ", (ans)=>{
     DiaryStuffLongPARA = ans;
-    console.log(DiaryStuffLongPARA);
     resolve()
 });
 })
@@ -51,7 +50,6 @@ const q3 = () => {
     return new Promise((resolve, reject) => {
         rl.question("Enter Title: ", (ans)=>{
         tie = ans;
-        console.log(tie);
         resolve()
     });
     })    
@@ -65,7 +63,7 @@ function arrange() {
         bp.push(x);
     });
     bp.join("\n");
-    bp.push('```');console.log(bp)
+    bp.push('```');
 }
 async function post(){
     const res = await fetch(
@@ -107,7 +105,7 @@ async function post(){
           }),
         }
       );
-    return res;
+    return res.json();
 }
 
 
@@ -118,8 +116,7 @@ const main = async() => {
     rl.close();
     await arrange();
     await post().then((dat)=> {
-        //console.log(dat)
-        console.log(dat.json())
+        console.log(dat)
     })
     
     
